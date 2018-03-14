@@ -22,6 +22,8 @@ class CafeShopViewModel: NSObject {
         }
     }
     
+    var updateViewByKeyboard: ((CGFloat) -> Void)?
+    
     init(searchBar: UISearchBar, tableView: UITableView) {
 
         self.searchBar = searchBar
@@ -42,6 +44,9 @@ class CafeShopViewModel: NSObject {
                 debugPrint("loading data failed by \(error.localizedDescription)")
             }
         })
+        
+        //Test callback function updateViewByKeyboard
+        self.updateViewByKeyboard?(15.0)
         
     }
     

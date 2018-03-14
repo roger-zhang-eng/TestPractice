@@ -25,9 +25,24 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.viewModel?.loadingData()
+        super.viewWillAppear(animated)
+        self.viewModel?.updateViewByKeyboard = self.updateViewByKeyboard
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.viewModel?.loadingData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.viewModel?.updateViewByKeyboard = nil
+    }
 
+    func updateViewByKeyboard(height: CGFloat) {
+        debugPrint("ViewController: updateViewByKeyboard by offset \(height)")
+    }
 }
 
